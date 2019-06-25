@@ -51,7 +51,7 @@
              &nbsp;</p>
          <p>
         <asp:Button ID="find_button" runat="server" Text="FIND" Height="32px" OnClick="find_button_Click" Width="102px" style="margin-left: 1653px; margin-right: 497px; margin-bottom: 2px" />
-         </p>
+         </p> 
     </form>
 </body>
 </html>
