@@ -11,7 +11,7 @@
          <div style ="background-color:#077390; width:100%; heigth:100%">
         <h4 align="center" style="font-size:400%;">RENT-A-CAR</h4>
     </div>
-    <div style="font-size:200%;">
+    <div style="font-size:800%;">
 
         <asp:Label ID="find_label" runat="server" Text="Find a car to rent :"></asp:Label>
         </div>
