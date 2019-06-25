@@ -16,7 +16,7 @@ namespace FinalTask
 
         protected void find_button_Click(object sender, EventArgs e)
         {
-            Response.Redirect("Default.aspx");
+            Response.Redirect("login.aspx");
         }
     }
 }
