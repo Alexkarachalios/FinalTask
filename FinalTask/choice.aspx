@@ -13,7 +13,8 @@
         <h4 align="center" style="font-size:300%; height: 69px;">RENT-A-CAR </h4>
     </div>
          <p>
-             &nbsp;</p>
+             <asp:Label style="background-color:#077390; font-size:110%" ID="Label1" runat="server" Text="Label"></asp:Label>
+         </p>
          <p align="center">
              <asp:Button  ID="Search" runat="server" OnClick="Button1_Click" style="margin-left: 0px" Text="Search" Width="202px" Height="48px" />
          </p>

@@ -56,7 +56,7 @@ namespace FinalTask
 
             if (result != null)
             {
-
+                Session["username"] = username_text.Text.ToString();
                 Response.Redirect("choice.aspx");
 
             }

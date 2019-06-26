@@ -7,3 +7,19 @@ CREATE TABLE users (
 ) WITH (
   OIDS=FALSE
 );
+
+query gia na dimiourgisete to prwto table tis vasis.
+
+gia na setarete to connection me ti vasi..
+1)https://www.enterprisedb.com/downloads/postgres-postgresql-downloads katevazete apo edw tin ekdosi 11.4 gia windows
+2)https://www.pgadmin.org/download/ katevazete apo edw to pgadmin tin teleutaia ekdosi
+3)molis katevasete tin postgres tha sas pei kapou na kanete egkatastasi to stack builder..afou kanete kai auto egkatastasi
+tha prepei meta na to anoiksete tha epileksete to postgresSQL 11 apo ena menou pou exei kai meta tha patisete next kai tha 
+anoiksete to database drivers kai tha kanete egkatastasi to Npgsql v3.2...
+4)meta tha pate sto visual studio Tools->Extensions and Updates kai tha psaksete to Npgsql PostgreSQL integration kai tha to kanete install
+5)meta tha pate pali Tools->Nuget Package Manager->Manage nuget packages for solution kai ekei tha psaksete EntityFramework6.Npgsql kai tha 
+to kanete egkatastasi.
+6)tha anoiksete to pgadmin kai tha ftiaksete ena server. sto general ekei pou leei name valte myDB .sto connection ekei pou leei
+host name valte localhost port 5432 maintenance database postgres username postgres kai password valte 1021989Alex ..sto advanced
+valte host address 127.0.0.1..afou sas ftiaksei ti vasi anoikste apo aristera to myDB vritew to database postgres apo katw kante 
+deksi klik kai patiste query tool..kante copy paste to panw query kai patiste ton keravno..
