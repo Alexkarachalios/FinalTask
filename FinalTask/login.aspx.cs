@@ -51,14 +51,12 @@ namespace FinalTask
         protected void login_button_Click(object sender, EventArgs e)
         {
             
-     
             var cmd1 = new NpgsqlCommand("SELECT username,password FROM users WHERE username='" + username_text.Text.ToString() + "' AND password='" + password_text.Text.ToString() + "'", conn);
             var result = cmd1.ExecuteScalar();
 
             if (result != null)
             {
-                
-                
+
                 Response.Redirect("choice.aspx");
 
             }
