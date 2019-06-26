@@ -23,3 +23,5 @@ to kanete egkatastasi.
 host name valte localhost port 5432 maintenance database postgres username postgres kai password valte 1021989Alex ..sto advanced
 valte host address 127.0.0.1..afou sas ftiaksei ti vasi anoikste apo aristera to myDB vritew to database postgres apo katw kante 
 deksi klik kai patiste query tool..kante copy paste to panw query kai patiste ton keravno..
+
+kirk
