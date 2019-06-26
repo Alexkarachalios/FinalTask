@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="choice.aspx.cs" Inherits="FinalTask.choice" %>
+﻿
+<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="choice.aspx.cs" Inherits="FinalTask.choice" %>
 
 <!DOCTYPE html>
 
@@ -13,8 +14,6 @@
     </div>
          <p>
              &nbsp;</p>
-         <p>
-             &nbsp;</p>
          <p align="center">
              <asp:Button  ID="Search" runat="server" OnClick="Button1_Click" style="margin-left: 0px" Text="Search" Width="202px" Height="48px" />
          </p>
@@ -23,6 +22,10 @@
          <p align="center">
              <asp:Button  ID="NewEntry" runat="server" OnClick="Button1_Click" style="margin-left: 0px" Text="New Entry" Width="202px" Height="48px" />
          </p>
+         <p align="center">
+             &nbsp;</p>
+         <p align="center">
+             &nbsp;</p>
     </form>
 </body>
 </html>
