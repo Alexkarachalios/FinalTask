@@ -80,5 +80,10 @@ namespace FinalTask
 
 
         }
+
+        protected void back_button_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("login.aspx");
+        }
     }
 }

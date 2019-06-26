@@ -9,8 +9,10 @@
         create_button {float:right;}
     </style>
 </head>
-<body style="height: 608px">
+<body style="background-image:url('Content/Themes/car.png');">
+   
     <form id="form1" runat="server">
+        
         <div style ="background-color:#077390; width:100%; height:71px">
         <h4 align="center" style="font-size:300%; height: 69px;">RENT-A-CAR </h4>
     </div>
@@ -40,10 +42,15 @@
             <asp:Button ID="create_button" float="right" runat="server" Text="CREATE ACCOUNT" Width="132px" OnClick="create_button_Click" />
         </p>
         <p>
-            &nbsp;</p>
+
+
+
+            <asp:Button ID="back" float="right" runat="server" Text="BACK" Width="132px" OnClick="back_button_Click" />
+            </p>
 
 
 
     </form>
+        
 </body>
 </html>
