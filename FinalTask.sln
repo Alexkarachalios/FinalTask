@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{ED8E1EB4-129A-4862-8AC4-85DE7ED5F94F}"
 	ProjectSection(SolutionItems) = preProject
 		database.txt = database.txt
+		enjoy-css.css = enjoy-css.css
 	EndProjectSection
 EndProject
 Global

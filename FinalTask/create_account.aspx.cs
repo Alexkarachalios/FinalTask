@@ -59,24 +59,35 @@ namespace FinalTask
 
         protected void create_button_Click(object sender, EventArgs e)
         {
-            var cmd1 = new NpgsqlCommand("SELECT username FROM users WHERE username='"+username_text.Text.ToString()+"'",conn);   
-            var result=cmd1.ExecuteScalar();
 
-            if (result != null)
+            if (first_text.Text=="" | last_text.Text=="" | username_text.Text=="" | password_text.Text=="")
             {
-                string msg = "Username already exists!!!";
+                string msg = "Empty field detected!!!";
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
-                
             }
             else
             {
-                var cmd = new NpgsqlCommand("INSERT INTO users(name,surname,username,password) VALUES('" + first_text.Text.ToString() + "','" + last_text.Text.ToString() + "','" + username_text.Text.ToString() + "','" + password_text.Text.ToString() + "')", conn);
+                var cmd1 = new NpgsqlCommand("SELECT username FROM users WHERE username='" + username_text.Text.ToString() + "'", conn);
+                var result = cmd1.ExecuteScalar();
 
-                //cmd.Prepare();
-                // Set parameters
-                cmd.ExecuteNonQuery();
-                // And so on
+                if (result != null)
+                {
+                    string msg = "Username already exists!!!";
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
+
+                }
+                else
+                {
+                    var cmd = new NpgsqlCommand("INSERT INTO users(name,surname,username,password) VALUES('" + first_text.Text.ToString() + "','" + last_text.Text.ToString() + "','" + username_text.Text.ToString() + "','" + password_text.Text.ToString() + "')", conn);
+
+                    //cmd.Prepare();
+                    // Set parameters
+                    cmd.ExecuteNonQuery();
+                    Response.Redirect("login.aspx");
+                    // And so on
+                }
             }
+            
 
 
         }
