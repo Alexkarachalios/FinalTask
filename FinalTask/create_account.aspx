@@ -47,7 +47,7 @@
 
             var myloc = { lat: mylat, lng: mylng };
             //var hdnfldVariable = document.getElementById('hdnfldVariable');
-            document.getElementById('location').value = myloc;
+            document.getElementById('location').value = "(" + mylat + "," + mylng + ")";
 
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(function (position) {
@@ -56,7 +56,7 @@
               lng: position.coords.longitude
                 };
 
-                document.getElementById('location').value = pos;
+                document.getElementById('location').value = "(" + position.coords.latitude + "," + position.coords.longitude + ")";;
 
 
             marker.setPosition(pos);
