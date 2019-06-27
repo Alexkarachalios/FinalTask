@@ -20,7 +20,7 @@ namespace FinalTask
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            location.Value =  Session["latlng"].ToString();
+            location.Value = "(37.9417861, 23.6540173)"; //Session["latlng"].ToString();
 
             try
             {
@@ -37,13 +37,24 @@ namespace FinalTask
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
                 throw;
             }
-             
-            NpgsqlCommand cmnd = new NpgsqlCommand("SELECT latlng FROM users WHERE username != '" + Session["username"] + "'", conn);
+
+            NpgsqlCommand cmnd = new NpgsqlCommand("SELECT latlng FROM users WHERE username != '" + "asd" + "'", conn);//Session["username"]
             NpgsqlDataReader reader = cmnd.ExecuteReader();
             {
                 while (reader.Read())
                 {
                     cars_loc.Value += "/" + reader.GetString(0);
+                }
+                reader.Close();
+            }
+            cmnd.Cancel();
+
+            cmnd = new NpgsqlCommand("SELECT username FROM users WHERE username != '" + "asd" + "'", conn); //Session["username"]
+            reader = cmnd.ExecuteReader();
+            {
+                while (reader.Read())
+                {
+                    cars_user.Value += "/" + reader.GetString(0);
                 }
                 reader.Close();
             }

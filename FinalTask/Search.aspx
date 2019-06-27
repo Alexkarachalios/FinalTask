@@ -15,6 +15,7 @@
          </div>
         <asp:HiddenField ID="location" runat="server" />
         <asp:HiddenField ID="cars_loc" runat="server" />
+        <asp:HiddenField ID="cars_user" runat="server" />
     </form>
         <div id="map" class="center" style="width:1000px;height:500px;background:grey"></div>
     <script>
@@ -52,22 +53,34 @@
             infowindow.close();
 
 
-                var cars = (document.getElementById("cars_loc").value).split("/");
+            var cars = (document.getElementById("cars_loc").value).split("/");
+            var users = (document.getElementById("cars_user").value).split("/");
+            var markers = [];
 
-                for (i = 1; i < cars.length; i++) {
-                    var LatLng = cars[i].replace("(", "").replace(")", "").split(", ")
-                    var Lat = parseFloat(LatLng[0]);
-                    var Lng = parseFloat(LatLng[1]);
-                    var carloc = { lat: Lat, lng: Lng };
+            for (i = 1; i < cars.length; i++) {
+                var LatLng = cars[i].replace("(", "").replace(")", "").split(", ")
+                var Lat = parseFloat(LatLng[0]);
+                var Lng = parseFloat(LatLng[1]);
+                var carloc = { lat: Lat, lng: Lng };
 
-                    var marker = new google.maps.Marker({
-                        position: carloc,
-                        map: map,
-                        animation: google.maps.Animation.DROP,
-                        icon: 'carpin.png'
-                    })
-                }
+                markers[i] = new google.maps.Marker({
+                    position: carloc,
+                    map: map,
+                    animation: google.maps.Animation.DROP,
+                    icon: 'carpin.png',
+                    id: i
+                })
 
+                google.maps.event.addListener(markers[i], 'click', function () {
+                    var i = this.id;
+                    var infowindow = new google.maps.InfoWindow({
+                        content: users[i]
+                    });
+                    infowindow.open(map, markers[i]);
+                });
+               
+
+            }
         }
         
 
