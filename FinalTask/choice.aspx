@@ -16,12 +16,12 @@
              <asp:Label style="background-color:#077390; font-size:110%" ID="Label1" runat="server" Text="Label"></asp:Label>
          </p>
          <p align="center">
-             <asp:Button  ID="Search" runat="server" OnClick="Button1_Click" style="margin-left: 0px" Text="Search" Width="202px" Height="48px" />
+             <asp:Button  ID="Search" runat="server" OnClick="Search_Click" style="margin-left: 0px" Text="Search" Width="202px" Height="48px" />
          </p>
          <p>
              &nbsp;</p>
          <p align="center">
-             <asp:Button  ID="NewEntry" runat="server" OnClick="Button1_Click" style="margin-left: 0px" Text="New Entry" Width="202px" Height="48px" />
+             <asp:Button  ID="NewEntry" runat="server" OnClick="NewEntry_Click" style="margin-left: 0px" Text="New Entry" Width="202px" Height="48px" />
          </p>
          <p align="center">
              &nbsp;</p>

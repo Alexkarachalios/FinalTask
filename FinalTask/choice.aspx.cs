@@ -15,8 +15,7 @@ namespace FinalTask
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label1.Text = "Welcome "+Session["username"].ToString()+"!";
-               
+            Label1.Text = "Welcome " + Session["username"].ToString() + "!";
            
         }
 
@@ -26,17 +25,14 @@ namespace FinalTask
 
         protected void Search_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Search.aspx");
         }
 
         protected void NewEntry_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("new_entry.aspx");
         }
 
-        protected void Button1_Click(object sender, EventArgs e)
-        {
 
-        }
     }
 }

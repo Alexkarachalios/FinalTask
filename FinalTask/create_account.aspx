@@ -33,6 +33,84 @@
         <p>
             &nbsp;</p>
 
+        <div>Select your location in the map:
+            <asp:HiddenField ID="location" runat="server" />
+        </div>
+
+        <div id="map" class="center" style="width:1000px;height:500px;background:grey"></div>
+
+
+    <script>
+        function myMap() {
+            var mylat = 37.9415841;
+            var mylng = 23.6530173;
+
+            var myloc = { lat: mylat, lng: mylng };
+            //var hdnfldVariable = document.getElementById('hdnfldVariable');
+            document.getElementById('location').value = myloc;
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+                };
+
+                document.getElementById('location').value = pos;
+
+
+            marker.setPosition(pos);
+            map.setCenter(marker.getPosition());
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+            }
+
+            var mapOptions =
+            {
+                center: new google.maps.LatLng(myloc),
+                zoom: 15,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+
+
+            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+
+            var home = { lat: mylat, lng: mylng };
+
+
+            var marker = new google.maps.Marker({
+                position: home,
+                map: map,
+                animation: google.maps.Animation.DROP,
+                icon: 'mypin.png'
+            });
+
+            var infowindow = new google.maps.InfoWindow();
+            infowindow.open(map, marker);
+            infowindow.close();
+
+            google.maps.event.addListener(map, 'click', function (event) {
+                document.getElementById('location').value = event.latLng;
+                marker.setPosition(event.latLng);
+                map.setCenter(marker.getPosition());
+
+            });
+
+        }
+        
+
+
+        
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfm8O7RUSMRzdZK75-XKLtpU5DYvDObJ4&callback=myMap">
+    </script>
+
 
 
             <p>

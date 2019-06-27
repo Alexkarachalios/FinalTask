@@ -13,7 +13,7 @@ namespace FinalTask
         string localhost = "127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK";
+        string pass = "1234qwer"; //13898301153KSXK
         string database = "postgres";
         NpgsqlConnection conn;
 
@@ -57,6 +57,11 @@ namespace FinalTask
             if (result != null)
             {
                 Session["username"] = username_text.Text.ToString();
+
+                var cmd2 = new NpgsqlCommand("SELECT latlng FROM users WHERE username='" + username_text.Text.ToString() + "'", conn);
+                var result2 = cmd2.ExecuteScalar();
+                Session["latlng"] = result2;
+
                 Response.Redirect("choice.aspx");
 
             }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Npgsql;
 
 namespace FinalTask
 {
@@ -11,7 +12,7 @@ namespace FinalTask
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            location.Value = Session["latlng"].ToString();
         }
     }
 }

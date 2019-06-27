@@ -15,10 +15,11 @@ namespace FinalTask
         string localhost="127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK";
+        string pass = "1234qwer"; //13898301153KSXK
         string database = "postgres";
         NpgsqlConnection conn;
-    protected void Page_Load(object sender, EventArgs e)
+        //Label loc;
+        protected void Page_Load(object sender, EventArgs e)
         {
             try
             {
@@ -35,6 +36,8 @@ namespace FinalTask
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
                 throw;
             }
+            //loc = new Label();
+            //loc.Visible = false;
         }
 
         protected void first_text_TextChanged(object sender, EventArgs e)
@@ -78,8 +81,8 @@ namespace FinalTask
                 }
                 else
                 {
-                    var cmd = new NpgsqlCommand("INSERT INTO users(name,surname,username,password) VALUES('" + first_text.Text.ToString() + "','" + last_text.Text.ToString() + "','" + username_text.Text.ToString() + "','" + password_text.Text.ToString() + "')", conn);
-
+                    var cmd = new NpgsqlCommand("INSERT INTO users(name,surname,username,password,latlng) VALUES('" + first_text.Text.ToString() + "','" + last_text.Text.ToString() + "','" + username_text.Text.ToString() + "','" + password_text.Text.ToString() + "','" + location.Value + "')", conn);
+                    
                     //cmd.Prepare();
                     // Set parameters
                     cmd.ExecuteNonQuery();
