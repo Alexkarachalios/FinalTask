@@ -12,7 +12,26 @@
      <div style ="background-color:#077390; width:100%; height:71px">
         <h4  align="center" style="font-size:300%; height: 69px;">RENT-A-CAR </h4>
 
-         <div id="map" class="center" style="width:1000px;height:500px;background:grey"></div>
+         <div id="map" class="center" style="width:1000px;height:500px; margin-left: 560px;">l<asp:Label ID="car1_label" runat="server" Text="Label"></asp:Label>
+             <br />
+             <asp:Button ID="car1button" runat="server" OnClick="car1button_Click" Text="DIB" />
+             <br />
+             <br />
+             <asp:Label ID="car2_label" runat="server" Text="Label"></asp:Label>
+             <br />
+             <asp:Button ID="car2_button" runat="server" OnClick="car2_button_Click" Text="DIB" />
+             <br />
+             <br />
+             <asp:Label ID="car3_label" runat="server" Text="Label"></asp:Label>
+             <br />
+             <asp:Button ID="car3_button" runat="server" OnClick="car3_button_Click" Text="DIB" />
+             <br />
+             <br />
+             <asp:Label ID="car4_label" runat="server" Text="Label"></asp:Label>
+             <br />
+             <asp:Button ID="car4__button" runat="server" OnClick="car4__button_Click" Text="DIB" />
+             <br />
+         </div>
     </div>
         <asp:HiddenField ID="location" runat="server" />
         <asp:HiddenField ID="cars_loc" runat="server" />
