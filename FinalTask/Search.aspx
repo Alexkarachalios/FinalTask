@@ -15,6 +15,7 @@
          <div id="map" class="center" style="width:1000px;height:500px;background:grey"></div>
     </div>
         <asp:HiddenField ID="location" runat="server" />
+        <asp:HiddenField ID="cars_loc" runat="server" />
     </form>
 
     <script>
@@ -51,19 +52,22 @@
             infowindow.open(map, marker);
             infowindow.close();
 
-            /*
 
-            google.maps.event.addListener(map, 'click', function (event) {
-                //window.alert(event.latLng);
-                
-                var marker = new google.maps.Marker({
-                    position: event.latLng,
-                    map: map,
-                    animation: google.maps.Animation.DROP,
-                    icon: 'pin.png'
-                });
-                 map.setCenter(marker.getPosition());
-            }); */
+                var cars = (document.getElementById("cars_loc").value).split("/");
+
+                for (i = 1; i < cars.length; i++) {
+                    var LatLng = cars[i].replace("(", "").replace(")", "").split(", ")
+                    var Lat = parseFloat(LatLng[0]);
+                    var Lng = parseFloat(LatLng[1]);
+                    var carloc = { lat: Lat, lng: Lng };
+
+                    var marker = new google.maps.Marker({
+                        position: carloc,
+                        map: map,
+                        animation: google.maps.Animation.DROP,
+                        icon: 'carpin.png'
+                    })
+                }
 
         }
         
