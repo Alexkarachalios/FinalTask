@@ -20,7 +20,7 @@ namespace FinalTask
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            location.Value = "(37.9417861, 23.6540173)"; //Session["latlng"].ToString();
+            location.Value = Session["latlng"].ToString(); //"(37.9417861, 23.6540173)"; //
 
             try
             {
@@ -38,7 +38,7 @@ namespace FinalTask
                 throw;
             }
 
-            NpgsqlCommand cmnd = new NpgsqlCommand("SELECT latlng FROM users WHERE username != '" + "asd" + "'", conn);//Session["username"]
+            NpgsqlCommand cmnd = new NpgsqlCommand("SELECT latlng FROM users WHERE username != '" + Session["username"] + "'", conn);//
             NpgsqlDataReader reader = cmnd.ExecuteReader();
             {
                 while (reader.Read())
@@ -49,7 +49,7 @@ namespace FinalTask
             }
             cmnd.Cancel();
 
-            cmnd = new NpgsqlCommand("SELECT username FROM users WHERE username != '" + "asd" + "'", conn); //Session["username"]
+            cmnd = new NpgsqlCommand("SELECT username FROM users WHERE username != '" + Session["username"] + "'", conn); //
             reader = cmnd.ExecuteReader();
             {
                 while (reader.Read())
