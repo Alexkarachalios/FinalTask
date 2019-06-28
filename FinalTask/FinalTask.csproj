@@ -148,6 +148,7 @@
     <Content Include="Content\Themes\car.png" />
     <Content Include="Content\Themes\car2.jpg" />
     <Content Include="create_account.aspx" />
+    <Content Include="Details.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -228,6 +229,13 @@
     </Compile>
     <Compile Include="create_account.aspx.designer.cs">
       <DependentUpon>create_account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Details.aspx.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Details.aspx.designer.cs">
+      <DependentUpon>Details.aspx</DependentUpon>
     </Compile>
     <Compile Include="Search.aspx.cs">
       <DependentUpon>Search.aspx</DependentUpon>
