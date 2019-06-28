@@ -14,7 +14,7 @@ namespace FinalTask
         string localhost = "127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK";//
+        string pass = "1234qwer";//"13898301153KSXK";//
         string database = "postgres";
         NpgsqlConnection conn;
 
@@ -35,11 +35,30 @@ namespace FinalTask
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
                 throw;
             }
+
+            if (!IsPostBack)
+            {
+                NpgsqlCommand cmnd = new NpgsqlCommand("SELECT model, cc, km, year, price FROM cars WHERE carowner = '" + Session["username"] + "'", conn);
+                NpgsqlDataReader reader = cmnd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    updatebutton.Visible = true;
+                    add_button.Visible = false;
+                    model_text.Text = reader.GetString(0);
+                    cc_text.Text = reader.GetString(1);
+                    km_text.Text = reader.GetString(2);
+                    year_text.Text = reader.GetString(3);
+                    price_text.Text = reader.GetString(4);
+
+                }
+                reader.Close();
+                cmnd.Cancel();
+            }
         }
 
         protected void add_button_Click(object sender, EventArgs e)
         {
-            string usr = "'" + Session["username"].ToString() + "'";
             string s = FileUpload1.FileName;
             if (model_text.Text=="" | cc_text.Text=="" | km_text.Text=="" | year_text.Text=="" | price_text.Text=="" | s=="")
             {
@@ -48,17 +67,35 @@ namespace FinalTask
             }
             else
             {
-                
-                var cmd = new NpgsqlCommand("INSERT INTO cars(carowner,model,cc,price,km,year,photo) VALUES('" + Session["username"].ToString() + "','" + model_text.Text.ToString() + "','" + cc_text.Text.ToString() + "','" + price_text.Text.ToString() + "','" + km_text.Text.ToString() + "','" + year_text.Text.ToString() + "','" + s + "')", conn);
-                var cmd2 = new NpgsqlCommand("UPDATE USERS SET availability=true where username=" +  usr, conn);
+                var cmd = new NpgsqlCommand("INSERT INTO cars(carowner,model,cc,price,km,year) VALUES('" + Session["username"].ToString() + "','" + model_text.Text.ToString() + "','" + cc_text.Text.ToString() + "','" + price_text.Text.ToString() + "','" + km_text.Text.ToString() + "','" + year_text.Text.ToString() + "')", conn);
+                var cmd2 = new NpgsqlCommand("UPDATE users SET availability=true where username='" + Session["username"]+"'", conn);
                 //cmd.Prepare();
                 // Set parameters
                 cmd2.ExecuteNonQuery();
                 cmd.ExecuteNonQuery();
-                Response.Redirect("main.aspx");
-                // And so on
-           
+                Response.Redirect("choice.aspx");
+
             }
+
+        }
+
+        protected void UpdateButton_click(object sender, EventArgs e)
+        {
+            string s = FileUpload1.FileName;
+            if (model_text.Text == "" | cc_text.Text == "" | km_text.Text == "" | year_text.Text == "" | price_text.Text == "" | s == "")
+            {
+                string msg = "Empty field detected!!!";
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
+            }
+            else
+            {
+                var cmd = new NpgsqlCommand("UPDATE cars SET model='"+ model_text.Text.ToString() +"', cc='" + cc_text.Text.ToString() + "' , price='" + price_text.Text.ToString() + "', km='" + km_text.Text.ToString() + "' , year='" + year_text.Text.ToString() + "' WHERE carowner='" + Session["username"] + "'", conn);
+                cmd.ExecuteNonQuery();
+
+                Response.Redirect("choice.aspx");
+
+            }
+
         }
     }
 }

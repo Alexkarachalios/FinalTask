@@ -17,7 +17,7 @@
         <asp:HiddenField ID="cars_loc" runat="server" /><asp:HiddenField ID="cars_price" runat="server" />
         <asp:HiddenField ID="cars_user" runat="server" /><asp:HiddenField ID="cars_model" runat="server" />
         
-        <asp:Label ID="Label1" runat="server" Text="See details and contact user:"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="See details and contact owner:"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

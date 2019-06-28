@@ -69,6 +69,7 @@
     </p>
     <p>
        <asp:Button ID="add_button" runat="server" OnClick="add_button_Click" Text="ADD CAR" Width="91px" />
+        <asp:Button ID="updatebutton" runat="server" OnClick="UpdateButton_click" Text="UPDATE INFO" Visible="False" Width="106px" />
     </p>
 
     </div>

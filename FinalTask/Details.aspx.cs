@@ -13,10 +13,9 @@ namespace FinalTask
         string localhost = "127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK"; //13898301153KSXK
+        string pass = "1234qwer";//"13898301153KSXK";
         string database = "postgres";
         NpgsqlConnection conn;
-        NpgsqlConnection conn2;
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -28,14 +27,33 @@ namespace FinalTask
                 // Making connection with Npgsql provider
                 conn = new NpgsqlConnection(connstring);
                 conn.Open();
-                conn2 = new NpgsqlConnection(connstring);
-                conn2.Open();
             }
             catch (Exception msg)
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
                 throw;
             }
+
+            NpgsqlCommand cmnd;
+            NpgsqlDataReader reader;
+
+            cmnd = new NpgsqlCommand("SELECT model, cc, km, year, price FROM cars WHERE carowner = '" + Session["interested"] + "'", conn);
+            reader = cmnd.ExecuteReader();
+            {
+                reader.Read();
+                model_text.Text = reader.GetString(0);
+                cc_text.Text = reader.GetString(1);
+                km_text.Text = reader.GetString(2);
+                year_text.Text = reader.GetString(3);
+                price_text.Text = reader.GetString(4);
+                reader.Close();
+            }
+            cmnd.Cancel();
+
+        }
+
+        protected void contact_button_Click(object sender, EventArgs e)
+        {
 
         }
     }
