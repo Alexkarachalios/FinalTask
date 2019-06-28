@@ -14,8 +14,15 @@
 
          </div>
         <asp:HiddenField ID="location" runat="server" />
-        <asp:HiddenField ID="cars_loc" runat="server" />
-        <asp:HiddenField ID="cars_user" runat="server" />
+        <asp:HiddenField ID="cars_loc" runat="server" /><asp:HiddenField ID="cars_price" runat="server" />
+        <asp:HiddenField ID="cars_user" runat="server" /><asp:HiddenField ID="cars_model" runat="server" />
+        
+        <asp:Label ID="Label1" runat="server" Text="See details and contact user:"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Search user" />
+        
     </form>
         <div id="map" class="center" style="width:1000px;height:500px;background:grey"></div>
     <script>
@@ -55,6 +62,8 @@
 
             var cars = (document.getElementById("cars_loc").value).split("/");
             var users = (document.getElementById("cars_user").value).split("/");
+            var models = (document.getElementById("cars_model").value).split("/");
+            var prices = (document.getElementById("cars_price").value).split("/");
             var markers = [];
 
             for (i = 1; i < cars.length; i++) {
@@ -73,8 +82,11 @@
 
                 google.maps.event.addListener(markers[i], 'click', function () {
                     var i = this.id;
+                    var cont = "Owner: "+ users[i] +"<br>"+
+                        "Model: "+ models[i] +"<br>"+
+                    "Price pre day: " + prices[i] + "<br>";
                     var infowindow = new google.maps.InfoWindow({
-                        content: users[i]
+                        content: cont
                     });
                     infowindow.open(map, markers[i]);
                 });
