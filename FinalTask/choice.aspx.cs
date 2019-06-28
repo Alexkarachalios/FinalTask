@@ -33,6 +33,9 @@ namespace FinalTask
             Response.Redirect("new_entry.aspx");
         }
 
-
+        protected void MyAccount_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("create_account.aspx");
+        }
     }
 }

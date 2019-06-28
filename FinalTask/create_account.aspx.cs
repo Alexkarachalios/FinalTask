@@ -15,7 +15,7 @@ namespace FinalTask
         string localhost="127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK";//"1234qwer"; 
+        string pass = "1234qwer"; 
         string database = "postgres";
         NpgsqlConnection conn;
         //Label loc;
@@ -36,8 +36,8 @@ namespace FinalTask
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
                 throw;
             }
-            //loc = new Label();
-            //loc.Visible = false;
+
+
         }
 
         protected void first_text_TextChanged(object sender, EventArgs e)
