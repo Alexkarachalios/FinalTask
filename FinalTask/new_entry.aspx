@@ -65,6 +65,13 @@
         <asp:TextBox ID="price_text" runat="server" Width="120px"></asp:TextBox>
     </p>
     <p>
+        Availability:
+        <asp:DropDownList ID="DropDownList1" runat="server">
+            <asp:ListItem Value="true">Available</asp:ListItem>
+            <asp:ListItem Value="false">Not available</asp:ListItem>
+        </asp:DropDownList>
+    </p>
+    <p>
         Add image : <asp:FileUpload ID="FileUpload1" runat="server" Height="19px" style="margin-left: 14px" Width="222px" />
     </p>
     <p>

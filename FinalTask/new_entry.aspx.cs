@@ -54,6 +54,24 @@ namespace FinalTask
                 }
                 reader.Close();
                 cmnd.Cancel();
+
+                NpgsqlCommand cmnd2 = new NpgsqlCommand("SELECT availability FROM users WHERE username='" + Session["username"] + "'", conn);
+                NpgsqlDataReader reader2 = cmnd2.ExecuteReader();
+
+                reader2.Read();
+                if (reader2.GetString(0) == "true")
+                {
+                    DropDownList1.DataBind();
+                    DropDownList1.Items.FindByValue("true").Selected = true;
+                }
+                else
+                {
+                    DropDownList1.DataBind();
+                    DropDownList1.Items.FindByValue("false").Selected = true;
+                }
+                reader2.Close();
+                cmnd2.Cancel();
+
             }
         }
 
@@ -68,7 +86,7 @@ namespace FinalTask
             else
             {
                 var cmd = new NpgsqlCommand("INSERT INTO cars(carowner,model,cc,price,km,year) VALUES('" + Session["username"].ToString() + "','" + model_text.Text.ToString() + "','" + cc_text.Text.ToString() + "','" + price_text.Text.ToString() + "','" + km_text.Text.ToString() + "','" + year_text.Text.ToString() + "')", conn);
-                var cmd2 = new NpgsqlCommand("UPDATE users SET availability=true where username='" + Session["username"]+"'", conn);
+                var cmd2 = new NpgsqlCommand("UPDATE users SET availability = "+ DropDownList1.SelectedValue +" WHERE username='" + Session["username"]+"'", conn);
                 //cmd.Prepare();
                 // Set parameters
                 cmd2.ExecuteNonQuery();
@@ -91,6 +109,9 @@ namespace FinalTask
             {
                 var cmd = new NpgsqlCommand("UPDATE cars SET model='"+ model_text.Text.ToString() +"', cc='" + cc_text.Text.ToString() + "' , price='" + price_text.Text.ToString() + "', km='" + km_text.Text.ToString() + "' , year='" + year_text.Text.ToString() + "' WHERE carowner='" + Session["username"] + "'", conn);
                 cmd.ExecuteNonQuery();
+
+                var cmd2 = new NpgsqlCommand("UPDATE users SET availability = " + DropDownList1.SelectedValue + " WHERE username='" + Session["username"] + "'", conn);
+                cmd2.ExecuteNonQuery();
 
                 Response.Redirect("choice.aspx");
 
