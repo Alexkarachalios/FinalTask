@@ -124,5 +124,11 @@ namespace FinalTask
 
 
         }
+
+        protected void back_button_Click(object sender, EventArgs e)
+        {
+            conn.Close();
+            Response.Redirect("Search.aspx");
+        }
     }
 }

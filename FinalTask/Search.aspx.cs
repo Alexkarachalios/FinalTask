@@ -79,6 +79,8 @@ namespace FinalTask
             if (result != null)
             {
                 Session["interested"] = result.ToString();
+
+                conn.Close();
                 Response.Redirect("Details.aspx");
 
             }
