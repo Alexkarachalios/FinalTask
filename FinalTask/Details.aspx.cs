@@ -39,16 +39,31 @@ namespace FinalTask
 
             cmnd = new NpgsqlCommand("SELECT model, cc, km, year, price FROM cars WHERE carowner = '" + Session["interested"] + "'", conn);
             reader = cmnd.ExecuteReader();
-            {
-                reader.Read();
-                model_text.Text = reader.GetString(0);
-                cc_text.Text = reader.GetString(1);
-                km_text.Text = reader.GetString(2);
-                year_text.Text = reader.GetString(3);
-                price_text.Text = reader.GetString(4);
-                reader.Close();
-            }
+            reader.Read();
+
+            model_text.Text = reader.GetString(0);
+            cc_text.Text = reader.GetString(1);
+            km_text.Text = reader.GetString(2);
+            year_text.Text = reader.GetString(3);
+            price_text.Text = reader.GetString(4);
+
+            reader.Close();
             cmnd.Cancel();
+
+
+            cmnd = new NpgsqlCommand("SELECT name,surname FROM users WHERE username = '" + Session["interested"] + "'", conn);
+            reader = cmnd.ExecuteReader();
+
+            reader.Read();
+            oname.Text = reader.GetString(0);
+            olastname.Text = reader.GetString(1);
+
+            reader.Close();
+            cmnd.Cancel();
+
+            owner.Text = Session["interested"].ToString() + " information";
+            
+
 
         }
 

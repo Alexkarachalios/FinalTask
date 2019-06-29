@@ -73,7 +73,7 @@ namespace FinalTask
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            var cmnd = new NpgsqlCommand("SELECT username FROM users WHERE username='" + TextBox1.Text.ToString() + "'AND username != '" + Session["username"] + "' AND availability = TRUE", conn);
+            var cmnd = new NpgsqlCommand("SELECT username FROM users WHERE username='" + TextBox1.Text.ToString() + "'AND username != '" + Session["username"] + "' AND availability = 'true'", conn);
             var result = cmnd.ExecuteScalar();
 
             if (result != null)

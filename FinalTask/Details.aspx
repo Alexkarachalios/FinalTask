@@ -19,9 +19,8 @@
         </div>
         <p>
             &nbsp;</p>
-        <p>
-            &nbsp;</p>
-    <div style="height: 287px; width: 246px;">
+    <div style="height: 287px; width: 246px; float:left;">
+        <asp:Label ID="Label1" runat="server" Text="Car information:" Font-Bold="true" Font-Size="Large"></asp:Label>
     <p>
         Car model : 
         <asp:TextBox ID="model_text" runat="server" style="margin-left: 22px" Width="120px" Enabled="False"></asp:TextBox>
@@ -46,8 +45,47 @@
         
         <asp:Button ID="add_button" runat="server" OnClick="contact_button_Click" Text="Contact owner" Width="127px" />
     </div>
+
+
+
+        <div style="height: 287px; width: 270px; float:right;">
+
+            <asp:Label ID="owner" runat="server" Font-Bold="true" Font-Size="Large" ></asp:Label>
+
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <p style="float:right;">
+        Owner name : 
+        <asp:TextBox ID="oname" runat="server" style="margin-right: 25px" Width="120px" Enabled="False"></asp:TextBox>
+        </p>            
+
+            <br />
+            <br />
+            <br />
+
+    <p style="float:right;">
+        Owner lastname : 
+        <asp:TextBox ID="olastname" runat="server" style="margin-right: 25px" Width="120px" Enabled="False"></asp:TextBox>
+        </p>
+
+            <br />
+            <br />
+            <br />
+
+    <p style="float:right;">
+        Owner rating : 
+        <asp:TextBox ID="oarating" runat="server" style="margin-right: 25px" Width="120px" Enabled="False"></asp:TextBox>
+        </p>
+
+        </div>
         
-        <asp:Image ID="Image1" runat="server" Width="269px" align="Right" />
+        <p style="float: right">
+        
+        <asp:Image ID="Image1" runat="server" Width="274px" align="Right" />
+        </p>
     </form>
     </body>
 </html>
