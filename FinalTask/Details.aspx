@@ -19,8 +19,14 @@
         </div>
         <p>
             &nbsp;</p>
-    <div style="height: 287px; width: 246px; float:left;">
+    <div style="height: 438px; width: 391px; float:left;">
         <asp:Label ID="Label1" runat="server" Text="Car information:" Font-Bold="true" Font-Size="Large"></asp:Label>
+        <br />
+        <br />
+        
+        <asp:Image ID="Image1" runat="server" height="70" width="100"/>
+        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+        <br />
     <p>
         Car model : 
         <asp:TextBox ID="model_text" runat="server" style="margin-left: 22px" Width="120px" Enabled="False"></asp:TextBox>
@@ -43,7 +49,12 @@
     </p>
     <br />
         
-        <asp:Button ID="add_button" runat="server" OnClick="contact_button_Click" Text="Contact owner" Width="127px" />
+        <asp:Button ID="dibs_button" runat="server" OnClick="contact_button_Click" Text="DIB CAR" Width="128px" />
+    &nbsp;&nbsp;&nbsp;
+        <br />
+        <asp:Label ID="state_label" runat="server"></asp:Label>
+        <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
 
 
@@ -82,10 +93,6 @@
 
         </div>
         
-        <p style="float: right">
-        
-        <asp:Image ID="Image1" runat="server" Width="274px" align="Right" />
-        </p>
     </form>
     </body>
 </html>

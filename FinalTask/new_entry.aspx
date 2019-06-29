@@ -27,12 +27,15 @@
             width: 150px;
         }
         #Button1 {
-            margin-left: 205px;
+            margin-left: 0px;
         }
         #add_button {
             margin-left: 96px;
         }
-    </style>
+        #Button2 {
+            margin-left: 77px;
+        }
+        </style>
 </head>
 <body style="background-image:url('Content/Themes/car.png');">
     <form id="form1" runat="server">
@@ -47,10 +50,16 @@
     <p>
         Car model : 
         <asp:TextBox ID="model_text" runat="server" style="margin-left: 22px" Width="120px"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="dibs1_label" runat="server" Text="NO DIBS YET"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="dibs1_button" runat="server" OnClick="dibs1_button_Click" Text="ACCEPT RENTAL" Visible="False" />
+        <asp:Button ID="decline_button" runat="server" OnClick="decline_button_Click" style="margin-left: 62px" Text="DECLINE RENTAL" Visible="False" />
         </p>
     <p>
         Cc : 
         <asp:TextBox ID="cc_text" runat="server" style="margin-left: 71px" Width="120px"></asp:TextBox>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         </p>
     <p>
         Total km : 

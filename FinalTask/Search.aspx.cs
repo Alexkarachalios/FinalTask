@@ -14,7 +14,7 @@ namespace FinalTask
         string localhost = "127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "1234qwer";//"13898301153KSXK";
+        string pass = "13898301153KSXK";//"13898301153KSXK";
         string database = "postgres";
         NpgsqlConnection conn;
         NpgsqlConnection conn2;

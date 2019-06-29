@@ -31,6 +31,33 @@ namespace FinalTask {
         protected global::System.Web.UI.WebControls.TextBox model_text;
         
         /// <summary>
+        /// dibs1_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label dibs1_label;
+        
+        /// <summary>
+        /// dibs1_button control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button dibs1_button;
+        
+        /// <summary>
+        /// decline_button control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button decline_button;
+        
+        /// <summary>
         /// cc_text control.
         /// </summary>
         /// <remarks>

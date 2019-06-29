@@ -147,6 +147,7 @@
     <Content Include="Content\Site.css" />
     <Content Include="Content\Themes\car.png" />
     <Content Include="Content\Themes\car2.jpg" />
+    <Content Include="Content\Themes\toyota.jpg" />
     <Content Include="create_account.aspx" />
     <Content Include="Details.aspx" />
     <Content Include="Search.aspx" />

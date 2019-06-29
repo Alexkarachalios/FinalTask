@@ -31,6 +31,24 @@ namespace FinalTask {
         protected global::System.Web.UI.WebControls.Label Label1;
         
         /// <summary>
+        /// Image1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image Image1;
+        
+        /// <summary>
+        /// Label2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label Label2;
+        
+        /// <summary>
         /// model_text control.
         /// </summary>
         /// <remarks>
@@ -76,13 +94,22 @@ namespace FinalTask {
         protected global::System.Web.UI.WebControls.TextBox price_text;
         
         /// <summary>
-        /// add_button control.
+        /// dibs_button control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button add_button;
+        protected global::System.Web.UI.WebControls.Button dibs_button;
+        
+        /// <summary>
+        /// state_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label state_label;
         
         /// <summary>
         /// owner control.
@@ -119,14 +146,5 @@ namespace FinalTask {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox oarating;
-        
-        /// <summary>
-        /// Image1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Image1;
     }
 }

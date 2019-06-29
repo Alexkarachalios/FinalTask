@@ -14,7 +14,7 @@ namespace FinalTask
         string localhost = "127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "1234qwer";//"13898301153KSXK";//
+        string pass = "13898301153KSXK";
         string database = "postgres";
         NpgsqlConnection conn;
 
@@ -73,6 +73,28 @@ namespace FinalTask
                 cmnd2.Cancel();
 
             }
+
+            NpgsqlCommand cmd_dibs = new NpgsqlCommand("SELECT * FROM dibs WHERE renter='" + Session["username"] + "'", conn);
+            var check = cmd_dibs.ExecuteScalar();
+            if (check!=null)
+            {
+                NpgsqlDataReader read_dibs = cmd_dibs.ExecuteReader();
+                read_dibs.Read();
+                if (read_dibs.GetString(0) != null & read_dibs.GetString(2) == "pending")
+                {
+                    dibs1_label.Text = read_dibs.GetString(1) + " WANTS TO RENT YOUR CAR";
+                    dibs1_button.Visible = true;
+                    decline_button.Visible = true;
+                }
+                else if (read_dibs.GetString(0) != null & read_dibs.GetString(2) == "yes")
+                {
+                    dibs1_label.Text = read_dibs.GetString(1) + " IS RENTING YOUR CAR";
+                    dibs1_button.Visible = false;
+                    decline_button.Visible = false;
+                }
+                read_dibs.Close();
+            }
+            
         }
 
         protected void add_button_Click(object sender, EventArgs e)
@@ -107,7 +129,7 @@ namespace FinalTask
             }
             else
             {
-                var cmd = new NpgsqlCommand("UPDATE cars SET model='"+ model_text.Text.ToString() +"', cc='" + cc_text.Text.ToString() + "' , price='" + price_text.Text.ToString() + "', km='" + km_text.Text.ToString() + "' , year='" + year_text.Text.ToString() + "' WHERE carowner='" + Session["username"] + "'", conn);
+                var cmd = new NpgsqlCommand("UPDATE cars SET model='"+ model_text.Text.ToString() +"', cc='" + cc_text.Text.ToString() + "' , price='" + price_text.Text.ToString() + "', km='" + km_text.Text.ToString() + "' , year='" + year_text.Text.ToString() + "' , photo='" + s.ToString() +  "' WHERE carowner='" + Session["username"] + "'", conn);
                 cmd.ExecuteNonQuery();
 
                 var cmd2 = new NpgsqlCommand("UPDATE users SET availability = " + DropDownList1.SelectedValue + " WHERE username='" + Session["username"] + "'", conn);
@@ -116,6 +138,24 @@ namespace FinalTask
                 Response.Redirect("choice.aspx");
 
             }
+
+        }
+
+        protected void dibs1_button_Click(object sender, EventArgs e)
+        {
+            NpgsqlCommand cmd_accept = new NpgsqlCommand("UPDATE dibs SET accept='yes' WHERE renter='" + Session["username"] + "'" , conn);
+            cmd_accept.ExecuteNonQuery();
+            dibs1_button.Visible = false;
+            decline_button.Visible = false;
+            dibs1_label.Text = "YOUR CAR IS RENTED";
+        }
+
+        protected void decline_button_Click(object sender, EventArgs e)
+        {
+            NpgsqlCommand cmd_decline = new NpgsqlCommand("DELETE FROM dibs WHERE renter='" + Session["username"] + "'", conn);
+            cmd_decline.ExecuteNonQuery();
+            dibs1_button.Visible = false;
+            decline_button.Visible = false;
 
         }
     }
