@@ -112,6 +112,8 @@ namespace FinalTask
                     //cmd.Prepare();
                     // Set parameters
                     cmd.ExecuteNonQuery();
+
+                    conn.Close();
                     Response.Redirect("login.aspx");
                     // And so on
                 }
@@ -123,6 +125,7 @@ namespace FinalTask
 
         protected void back_button_Click(object sender, EventArgs e)
         {
+            conn.Close();
             Response.Redirect("login.aspx");
         }
 
@@ -153,6 +156,7 @@ namespace FinalTask
 
         protected void backtochoice_button_Click(object sender, EventArgs e)
         {
+            conn.Close();
             Response.Redirect("choice.aspx");
 
         }

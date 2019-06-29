@@ -62,7 +62,6 @@ namespace FinalTask
             cmnd.Cancel();
 
             owner.Text = Session["interested"].ToString() + " information";
-            
 
 
         }
@@ -70,6 +69,12 @@ namespace FinalTask
         protected void contact_button_Click(object sender, EventArgs e)
         {
 
+        }
+
+        protected void back_button_Click(object sender, EventArgs e)
+        {
+            conn.Close();
+            Response.Redirect("Search.aspx");
         }
     }
 }

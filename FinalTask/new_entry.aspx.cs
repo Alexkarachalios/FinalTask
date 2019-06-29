@@ -91,6 +91,8 @@ namespace FinalTask
                 // Set parameters
                 cmd2.ExecuteNonQuery();
                 cmd.ExecuteNonQuery();
+
+                conn.Close();
                 Response.Redirect("choice.aspx");
 
             }
@@ -113,6 +115,7 @@ namespace FinalTask
                 var cmd2 = new NpgsqlCommand("UPDATE users SET availability = " + DropDownList1.SelectedValue + " WHERE username='" + Session["username"] + "'", conn);
                 cmd2.ExecuteNonQuery();
 
+                conn.Close();
                 Response.Redirect("choice.aspx");
 
             }

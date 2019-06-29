@@ -74,6 +74,7 @@ namespace FinalTask
 
         protected void create_account_button_Click(object sender, EventArgs e)
         {
+            conn.Close();
             Response.Redirect("create_account.aspx");
         }
     }

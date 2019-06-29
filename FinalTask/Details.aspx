@@ -43,9 +43,8 @@
     </p>
     <br />
         
-        <asp:Button ID="add_button" runat="server" OnClick="contact_button_Click" Text="Contact owner" Width="127px" />
     </div>
-
+       
 
 
         <div style="height: 287px; width: 270px; float:right;">
@@ -85,7 +84,13 @@
         <p style="float: right">
         
         <asp:Image ID="Image1" runat="server" Width="274px" align="Right" />
+
+
         </p>
+
+         <asp:Button ID="add_button" runat="server" OnClick="contact_button_Click" Text="Contact owner" Width="127px" />
+        <asp:Button ID="back" runat="server" OnClick="back_button_Click" Text="Back" Width="127px" />
+
     </form>
     </body>
 </html>
