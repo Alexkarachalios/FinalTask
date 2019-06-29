@@ -76,7 +76,7 @@ namespace FinalTask
 
             NpgsqlCommand cmd_dibs = new NpgsqlCommand("SELECT * FROM dibs WHERE renter='" + Session["username"] + "'", conn);
             var check = cmd_dibs.ExecuteScalar();
-            if (check!=null)
+            if (check != null)
             {
                 NpgsqlDataReader read_dibs = cmd_dibs.ExecuteReader();
                 read_dibs.Read();
@@ -94,13 +94,13 @@ namespace FinalTask
                 }
                 read_dibs.Close();
             }
-            
+
         }
 
         protected void add_button_Click(object sender, EventArgs e)
         {
             string s = FileUpload1.FileName;
-            if (model_text.Text=="" | cc_text.Text=="" | km_text.Text=="" | year_text.Text=="" | price_text.Text=="" | s=="")
+            if (model_text.Text == "" | cc_text.Text == "" | km_text.Text == "" | year_text.Text == "" | price_text.Text == "" | s == "")
             {
                 string msg = "Empty field detected!!!";
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
@@ -108,13 +108,11 @@ namespace FinalTask
             else
             {
                 var cmd = new NpgsqlCommand("INSERT INTO cars(carowner,model,cc,price,km,year) VALUES('" + Session["username"].ToString() + "','" + model_text.Text.ToString() + "','" + cc_text.Text.ToString() + "','" + price_text.Text.ToString() + "','" + km_text.Text.ToString() + "','" + year_text.Text.ToString() + "')", conn);
-                var cmd2 = new NpgsqlCommand("UPDATE users SET availability = "+ DropDownList1.SelectedValue +" WHERE username='" + Session["username"]+"'", conn);
+                var cmd2 = new NpgsqlCommand("UPDATE users SET availability = " + DropDownList1.SelectedValue + " WHERE username='" + Session["username"] + "'", conn);
                 //cmd.Prepare();
                 // Set parameters
                 cmd2.ExecuteNonQuery();
                 cmd.ExecuteNonQuery();
-
-                conn.Close();
                 Response.Redirect("choice.aspx");
 
             }
@@ -131,13 +129,12 @@ namespace FinalTask
             }
             else
             {
-                var cmd = new NpgsqlCommand("UPDATE cars SET model='"+ model_text.Text.ToString() +"', cc='" + cc_text.Text.ToString() + "' , price='" + price_text.Text.ToString() + "', km='" + km_text.Text.ToString() + "' , year='" + year_text.Text.ToString() + "' , photo='" + s.ToString() +  "' WHERE carowner='" + Session["username"] + "'", conn);
+                var cmd = new NpgsqlCommand("UPDATE cars SET model='" + model_text.Text.ToString() + "', cc='" + cc_text.Text.ToString() + "' , price='" + price_text.Text.ToString() + "', km='" + km_text.Text.ToString() + "' , year='" + year_text.Text.ToString() + "' , photo='" + s.ToString() + "' WHERE carowner='" + Session["username"] + "'", conn);
                 cmd.ExecuteNonQuery();
 
                 var cmd2 = new NpgsqlCommand("UPDATE users SET availability = " + DropDownList1.SelectedValue + " WHERE username='" + Session["username"] + "'", conn);
                 cmd2.ExecuteNonQuery();
 
-                conn.Close();
                 Response.Redirect("choice.aspx");
 
             }
@@ -146,7 +143,7 @@ namespace FinalTask
 
         protected void dibs1_button_Click(object sender, EventArgs e)
         {
-            NpgsqlCommand cmd_accept = new NpgsqlCommand("UPDATE dibs SET accept='yes' WHERE renter='" + Session["username"] + "'" , conn);
+            NpgsqlCommand cmd_accept = new NpgsqlCommand("UPDATE dibs SET accept='yes' WHERE renter='" + Session["username"] + "'", conn);
             cmd_accept.ExecuteNonQuery();
             dibs1_button.Visible = false;
             decline_button.Visible = false;
