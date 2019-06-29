@@ -41,7 +41,7 @@ namespace FinalTask
                 throw;
             }
 
-            NpgsqlCommand cmnd = new NpgsqlCommand("SELECT username,latlng FROM users WHERE username != '" + Session["username"] + "' AND availability = true", conn);//
+            NpgsqlCommand cmnd = new NpgsqlCommand("SELECT username,latlng FROM users WHERE username != '" + Session["username"] + "' AND availability = 'true'", conn);//
             NpgsqlDataReader reader = cmnd.ExecuteReader();
             {
                 NpgsqlCommand cmnd2;

@@ -94,6 +94,42 @@ namespace FinalTask {
         protected global::System.Web.UI.WebControls.TextBox password_text;
         
         /// <summary>
+        /// birth_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label birth_label;
+        
+        /// <summary>
+        /// birth_text control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox birth_text;
+        
+        /// <summary>
+        /// exp_label control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label exp_label;
+        
+        /// <summary>
+        /// exp_text control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox exp_text;
+        
+        /// <summary>
         /// location control.
         /// </summary>
         /// <remarks>
@@ -112,6 +148,15 @@ namespace FinalTask {
         protected global::System.Web.UI.WebControls.Button create_button;
         
         /// <summary>
+        /// update_button control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button update_button;
+        
+        /// <summary>
         /// back control.
         /// </summary>
         /// <remarks>
@@ -119,5 +164,14 @@ namespace FinalTask {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button back;
+        
+        /// <summary>
+        /// backtochoice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button backtochoice;
     }
 }

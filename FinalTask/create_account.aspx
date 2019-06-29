@@ -29,8 +29,14 @@
             <asp:TextBox ID="username_text" float="right" runat="server" style="margin-left: 53px; margin-top: 15px;" OnTextChanged="username_text_TextChanged" Height="19px"></asp:TextBox><br>
 
            <asp:Label ID="password_label" runat="server" Text="Password :"></asp:Label>
-            <asp:TextBox ID="password_text" float="right" runat="server" style="margin-left: 53px; margin-top: 15px;" OnTextChanged="password_text_TextChanged" Height="19px"></asp:TextBox>
-        <p>
+            <asp:TextBox ID="password_text" float="right" runat="server" style="margin-left: 53px; margin-top: 15px;" OnTextChanged="password_text_TextChanged" Height="19px"></asp:TextBox><br>
+                   
+        <asp:Label ID="birth_label" runat="server" Text="Year of birth :"></asp:Label>
+            <asp:TextBox ID="birth_text" float="right" runat="server" style="margin-left: 53px; margin-top: 15px;" Height="19px" ></asp:TextBox><br>
+
+           <asp:Label ID="exp_label" runat="server" Text="Driving since :"></asp:Label>
+            <asp:TextBox ID="exp_text" float="right" runat="server" style="margin-left: 53px; margin-top: 15px;" Height="19px"></asp:TextBox>
+<p>
             &nbsp;</p>
 
         <div>Select your location in the map:
@@ -42,32 +48,53 @@
 
     <script>
         function myMap() {
-            var mylat = 37.9415841;
-            var mylng = 23.6530173;
 
-            var myloc = { lat: mylat, lng: mylng };
-            //var hdnfldVariable = document.getElementById('hdnfldVariable');
-            document.getElementById('location').value = "(" + mylat + ", " + mylng + ")";
+            var myloc;
+            var mylat;
+            var mylng;
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                var pos = {
-              lat: position.coords.latitude,
-              lng: position.coords.longitude
-                };
+            if (location.value != "")
+            {
+                var loc = document.getElementById('location').value;
+                var LatLng = loc.replace("(", "").replace(")", "").split(", ")
+                mylat = parseFloat(LatLng[0]);
+                mylng = parseFloat(LatLng[1]);
+                myloc = {
+                    lat: mylat,
+                    lng: mylng
+                }
 
-                document.getElementById('location').value = "(" + position.coords.latitude + ", " + position.coords.longitude + ")";;
-
-
-            marker.setPosition(pos);
-            map.setCenter(marker.getPosition());
-          }, function() {
-            handleLocationError(true, infoWindow, map.getCenter());
-          });
-        } else {
-          // Browser doesn't support Geolocation
-          handleLocationError(false, infoWindow, map.getCenter());
             }
+            else
+            {
+                mylat = 37.9415841;
+                mylng = 23.6530173;
+
+                myloc = { lat: mylat, lng: mylng };
+
+                document.getElementById('location').value = "(" + mylat + ", " + mylng + ")";
+
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(function (position) {
+                        var pos = {
+                            lat: position.coords.latitude,
+                            lng: position.coords.longitude
+                        };
+
+                        document.getElementById('location').value = "(" + position.coords.latitude + ", " + position.coords.longitude + ")";;
+
+
+                        marker.setPosition(pos);
+                        map.setCenter(marker.getPosition());
+                    }, function () {
+                        handleLocationError(true, infoWindow, map.getCenter());
+                    });
+                } else {
+                    // Browser doesn't support Geolocation
+                    handleLocationError(false, infoWindow, map.getCenter());
+                }
+            }
+
 
             var mapOptions =
             {
@@ -75,7 +102,6 @@
                 zoom: 15,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             }
-
 
             var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
@@ -118,12 +144,17 @@
 
 
             <asp:Button ID="create_button" float="right" runat="server" Text="CREATE ACCOUNT" Width="132px" OnClick="create_button_Click" />
+            <asp:Button ID="update_button" float="right" runat="server" Text="UPDATE ACCOUNT" Width="132px" OnClick="update_button_Click" Visible="False" />
         </p>
         <p>
 
 
 
             <asp:Button ID="back" float="right" runat="server" Text="BACK" Width="132px" OnClick="back_button_Click" />
+
+
+
+            <asp:Button ID="backtochoice" float="right" runat="server" Text="BACK" Width="132px" OnClick="backtochoice_button_Click" Visible="False" />
             </p>
 
 
