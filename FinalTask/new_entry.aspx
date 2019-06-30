@@ -35,9 +35,12 @@
         #Button2 {
             margin-left: 77px;
         }
+        #add_button0 {
+            margin-left: 96px;
+        }
         </style>
 </head>
-<body style="background-image:url('Content/Themes/car.png');">
+<body style="background-image:url('Content/Themes/car.png'); background-size:100% 100%;">
     <form id="form1" runat="server">
         <div style="height: 42px">
             <h4 align="center" style="font-size:300%; height: 69px;">ADD A CAR FOR RENTAL</h4>
@@ -46,15 +49,10 @@
             &nbsp;</p>
         <p>
             &nbsp;</p>
-    <div style="height: 287px">
+    <div style="height: 395px; width: 313px; float:left">
     <p>
         Car model : 
         <asp:TextBox ID="model_text" runat="server" style="margin-left: 22px" Width="120px"></asp:TextBox>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Label ID="dibs1_label" runat="server" Text="NO DIBS YET"></asp:Label>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:Button ID="dibs1_button" runat="server" OnClick="dibs1_button_Click" Text="ACCEPT RENTAL" Visible="False" />
-        <asp:Button ID="decline_button" runat="server" OnClick="decline_button_Click" style="margin-left: 62px" Text="DECLINE RENTAL" Visible="False" />
         </p>
     <p>
         Cc : 
@@ -86,9 +84,51 @@
     <p>
        <asp:Button ID="add_button" runat="server" OnClick="add_button_Click" Text="ADD CAR" Width="91px" />
         <asp:Button ID="updatebutton" runat="server" OnClick="UpdateButton_click" Text="UPDATE INFO" Visible="False" Width="106px" />
+       <asp:Button ID="add_button0" runat="server" OnClick="back_button_Click" Text="BACK" Width="91px" />
     </p>
 
     </div>
+
+
+
+        <div id="dibs_div" runat="server" style="height: 345px; width:700px; float:right; margin-left: 0px;">
+
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Label ID="dibs1_label" runat="server" Text="NO DIBS YET"></asp:Label>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="dibs1_button" runat="server" OnClick="dibs1_button_Click" Text="ACCEPT RENTAL" Visible="False" />
+        <asp:Button ID="decline_button" runat="server" OnClick="decline_button_Click" style="margin-left: 62px" Text="DECLINE RENTAL" Visible="False" />
+
+            <br />
+            <br />
+            <br />
+            <br />
+
+            <p style="float:right;">
+        <asp:label id="rname_lab" runat="server" Visible="False">Renter name : </asp:label>
+        <asp:TextBox ID="rname" runat="server" style="margin-right: 25px" Width="120px" Enabled="False" Visible="False"></asp:TextBox>
+        </p>            
+
+            <br />
+            <br />
+            <br />
+
+    <p style="float:right;">
+        <asp:label id="rlast_lab" runat="server" Visible="False" >Renter lastname : </asp:label>
+        <asp:TextBox ID="rlastname" runat="server" style="margin-right: 25px" Width="120px" Enabled="False" Visible="False"></asp:TextBox>
+        </p>
+
+            <br />
+            <br />
+            <br />
+
+    <p style="float:right;">
+        <asp:label id="rrate_lab" runat="server" Visible="False">Renter rating : </asp:label>
+        <asp:TextBox ID="rrating" runat="server" style="margin-right: 25px" Width="120px" Visible="False" Enabled="False"></asp:TextBox>
+        </p>
+
+        </div>
+        
     </form>
     </body>
 </html>

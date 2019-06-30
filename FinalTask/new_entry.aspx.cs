@@ -14,9 +14,10 @@ namespace FinalTask
         string localhost = "127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK";
+        string pass = "1234qwer";
         string database = "postgres";
         NpgsqlConnection conn;
+        NpgsqlConnection conn2;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,6 +30,8 @@ namespace FinalTask
                 // Making connection with Npgsql provider
                 conn = new NpgsqlConnection(connstring);
                 conn.Open();
+                conn2 = new NpgsqlConnection(connstring);
+                conn2.Open();
             }
             catch (Exception msg)
             {
@@ -85,6 +88,7 @@ namespace FinalTask
                     dibs1_label.Text = read_dibs.GetString(1) + " WANTS TO RENT YOUR CAR";
                     dibs1_button.Visible = true;
                     decline_button.Visible = true;
+
                 }
                 else if (read_dibs.GetString(0) != null & read_dibs.GetString(2) == "yes")
                 {
@@ -92,7 +96,26 @@ namespace FinalTask
                     dibs1_button.Visible = false;
                     decline_button.Visible = false;
                 }
+                cmd_dibs.Cancel();
+
+
+                NpgsqlCommand cmnd3 = new NpgsqlCommand("SELECT name,surname FROM users WHERE username='" + read_dibs.GetString(1) + "'", conn2);
+                NpgsqlDataReader reader3 = cmnd3.ExecuteReader();
+                reader3.Read();
+                rrate_lab.Visible = true;
+                rrating.Visible = true;
+                //rrating.Text = reader3.GetString(2);
+                rlast_lab.Visible = true;
+                rlastname.Visible = true;
+                rlastname.Text = reader3.GetString(1);
+                rname_lab.Visible = true;
+                rname.Visible = true;
+                rname.Text = reader3.GetString(0);
+                reader3.Close();
+
+
                 read_dibs.Close();
+
             }
 
         }
@@ -136,9 +159,7 @@ namespace FinalTask
                 cmd2.ExecuteNonQuery();
 
                 Response.Redirect("choice.aspx");
-
             }
-
         }
 
         protected void dibs1_button_Click(object sender, EventArgs e)
@@ -157,6 +178,13 @@ namespace FinalTask
             dibs1_button.Visible = false;
             decline_button.Visible = false;
 
+        }
+
+        protected void back_button_Click(object sender, EventArgs e)
+        {
+            conn.Close();
+            conn2.Close();
+            Response.Redirect("Choice.aspx");
         }
     }
 }

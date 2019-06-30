@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body style="height: 458px">
+<body style="background-image: url('Content/Themes/car.png'); background-size:100% 100%;">
     <form id="form1" runat="server">
 
      <div style ="background-color:#077390; width:100%; height:71px">
@@ -22,6 +22,8 @@
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Search user" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="Button2" runat="server" OnClick="Back_Click" Text="Back" />
         
     </form>
         <div id="map" class="center" style="width:1000px;height:500px;background:grey"></div>

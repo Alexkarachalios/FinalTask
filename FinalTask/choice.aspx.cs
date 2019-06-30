@@ -10,18 +10,11 @@ namespace FinalTask
     public partial class choice : System.Web.UI.Page
     {
 
-
-       
-
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = "Welcome " + Session["username"].ToString() + "!";
            
         }
-
-       
-
-       
 
         protected void Search_Click(object sender, EventArgs e)
         {
@@ -36,6 +29,12 @@ namespace FinalTask
         protected void MyAccount_Click(object sender, EventArgs e)
         {
             Response.Redirect("create_account.aspx");
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            Session.RemoveAll();
+            Response.Redirect("login.aspx");
         }
     }
 }

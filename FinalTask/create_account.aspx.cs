@@ -15,10 +15,10 @@ namespace FinalTask
         string localhost="127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK"; 
+        string pass = "1234qwer"; 
         string database = "postgres";
         NpgsqlConnection conn;
-        //Label loc;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             try
@@ -116,6 +116,9 @@ namespace FinalTask
                     conn.Close();
                     Response.Redirect("login.aspx");
                     // And so on
+
+
+                    ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Account created!');", true);
                 }
             }
             
@@ -149,6 +152,7 @@ namespace FinalTask
                     cmd = new NpgsqlCommand("UPDATE users SET password='" + password_text.Text.ToString() + "' WHERE username='" + Session["username"] + "'", conn);
                     cmd.ExecuteNonQuery();
                 }
+                ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('Account updated!');", true);
             }
         }
 

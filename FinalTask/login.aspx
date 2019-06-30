@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body style="background-image:url('Content/Themes/car.png');">
+<body style="background-image:url('Content/Themes/car.png'); background-repeat:no-repeat; background-size:100% 100%;">
     <form id="form1" runat="server">
        <div style="background-color:#077390; width:100%; height:71px" >
            <h4 align="center" align="top" style="font-size:400%;">RENT-A-CAR</h4>

@@ -14,7 +14,7 @@ namespace FinalTask
         string localhost = "127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK";//"13898301153KSXK";
+        string pass = "1234qwer";
         string database = "postgres";
         NpgsqlConnection conn;
         NpgsqlConnection conn2;
@@ -89,6 +89,13 @@ namespace FinalTask
                 string msg = "User unavailable or does not exist!";
                 ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
             }
+        }
+
+        protected void Back_Click(object sender, EventArgs e)
+        {
+            conn.Close();
+            conn2.Close();
+            Response.Redirect("Choice.aspx");
         }
     }
 }

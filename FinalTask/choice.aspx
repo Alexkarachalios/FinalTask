@@ -7,7 +7,7 @@
 <head runat="server">
     <title></title>
 </head>
-<body style="background-image:url('Content/Themes/car.png');">
+<body style="background-image:url('Content/Themes/car.png'); background-repeat:no-repeat; background-size:100% 100%;">
     <form id="form1" runat="server">
          <div style ="background-color:#077390; width:100%; height:71px">
         <h4 align="center" style="font-size:300%; height: 69px;">RENT-A-CAR </h4>
@@ -27,6 +27,9 @@
              &nbsp;</p>
          <p align="center">
              <asp:Button  ID="MyAccount" runat="server" OnClick="MyAccount_Click" style="margin-left: 0px" Text="My Account" Width="202px" Height="48px" />
+         </p>
+         <p align="center">
+             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Logout" />
          </p>
     </form>
 </body>

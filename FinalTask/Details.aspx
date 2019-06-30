@@ -12,7 +12,7 @@
         }
     </style>
 </head>
-<body style="background-image: url('Content/Themes/car.png')">
+<body style="background-image: url('Content/Themes/car.png'); background-repeat:no-repeat; background-size:100% 100%;">
     <form id="form1" runat="server">
         <div style="height: 42px">
             <h4 align="center" style="font-size:300%; height: 69px;">Details</h4>
@@ -93,6 +93,31 @@
 
         </div>
         
-    </form>
+
+    
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+    <div runat="server" style="float:right;">
+        <asp:Button runat="server" OnClick="Unnamed1_Click" Text="Back"/>
+    </div>
+    
+            </form>
+
     </body>
 </html>
