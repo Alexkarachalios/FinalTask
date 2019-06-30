@@ -55,7 +55,7 @@
             myloc = { lat: mylat, lng: mylng };
 
 
-            if (location.Value != "")
+            if (location.Value != null)
             {
                 var loc = document.getElementById('location').value;
                 var LatLng = loc.replace("(", "").replace(")", "").split(", ")
