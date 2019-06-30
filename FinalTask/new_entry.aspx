@@ -72,15 +72,9 @@
         <asp:TextBox ID="price_text" runat="server" Width="120px"></asp:TextBox>
     </p>
     <p>
-        Availability:
-        <asp:DropDownList ID="DropDownList1" runat="server">
-            <asp:ListItem Value="true">Available</asp:ListItem>
-            <asp:ListItem Value="false">Not available</asp:ListItem>
-        </asp:DropDownList>
-    </p>
-    <p>
         Add image : <asp:FileUpload ID="FileUpload1" runat="server" Height="19px" style="margin-left: 14px" Width="222px" />
     </p>
+        <asp:Image ID="Image1" runat="server"  Visible="False"/>
     <p>
        <asp:Button ID="add_button" runat="server" OnClick="add_button_Click" Text="ADD CAR" Width="91px" />
         <asp:Button ID="updatebutton" runat="server" OnClick="UpdateButton_click" Text="UPDATE INFO" Visible="False" Width="106px" />
@@ -91,7 +85,7 @@
 
 
 
-        <div id="dibs_div" runat="server" style="height: 345px; width:700px; float:right; margin-left: 0px;">
+        <div id="dibs_div" runat="server" style="height: 372px; width:700px; float:right; margin-left: 0px;">
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="dibs1_label" runat="server" Text="NO DIBS YET"></asp:Label>
@@ -141,6 +135,23 @@
     <p style="float:right;">
         <asp:label id="rrate_lab" runat="server" Visible="False">Renter rating : </asp:label>
         <asp:TextBox ID="rrating" runat="server" style="margin-right: 25px" Width="120px" Visible="False" Enabled="False"></asp:TextBox>
+        </p>
+
+            <br />
+            <br />
+            <br />
+
+    <p style="float:right;">
+        <asp:label id="age_lab" runat="server" Visible="False">Year of birth : </asp:label>
+        <asp:TextBox ID="age" runat="server" style="margin-right: 25px" Width="120px" Visible="False" Enabled="False"></asp:TextBox>
+        </p>            
+            <br />
+            <br />
+            <br />
+
+    <p style="float:right;">
+        <asp:label id="exp_lab" runat="server" Visible="False">Driving since : </asp:label>
+        <asp:TextBox ID="exp" runat="server" style="margin-right: 25px" Width="120px" Visible="False" Enabled="False"></asp:TextBox>
         </p>
 
         </div>

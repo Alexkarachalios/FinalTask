@@ -86,7 +86,7 @@
                     var i = this.id;
                     var cont = "Owner: "+ users[i] +"<br>"+
                         "Model: "+ models[i] +"<br>"+
-                    "Price pre day: " + prices[i] + "<br>";
+                    "Price per day: " + prices[i] + "<br>";
                     var infowindow = new google.maps.InfoWindow({
                         content: cont
                     });

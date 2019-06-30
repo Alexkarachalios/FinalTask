@@ -14,10 +14,9 @@ namespace FinalTask
         string localhost = "127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK";
+        string pass = "1234qwer";//13898301153KSXK";
         string database = "postgres";
         NpgsqlConnection conn;
-        NpgsqlConnection conn2;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -32,8 +31,6 @@ namespace FinalTask
                 // Making connection with Npgsql provider
                 conn = new NpgsqlConnection(connstring);
                 conn.Open();
-                conn2 = new NpgsqlConnection(connstring);
-                conn2.Open();
             }
             catch (Exception msg)
             {
@@ -41,30 +38,16 @@ namespace FinalTask
                 throw;
             }
 
-            NpgsqlCommand cmnd = new NpgsqlCommand("SELECT username,latlng FROM users WHERE username != '" + Session["username"] + "' AND availability = 'true'", conn);//
+            NpgsqlCommand cmnd = new NpgsqlCommand("SELECT u.username, u.latlng, c.model, c.price FROM users u LEFT JOIN dibs d ON u.username = d.renter LEFT JOIN cars c on u.username = c.carowner WHERE d.renter IS NULL AND c.carowner IS NOT NULL AND u.username !='" + Session["username"] + "'", conn);
             NpgsqlDataReader reader = cmnd.ExecuteReader();
             {
-                NpgsqlCommand cmnd2;
-                NpgsqlDataReader reader2;
 
                 while (reader.Read())
                 {
                     cars_user.Value += "/" + reader.GetString(0);
                     cars_loc.Value += "/" + reader.GetString(1);
-
-                    cmnd2 = new NpgsqlCommand("SELECT model, price FROM cars WHERE carowner = '" + reader.GetString(0) + "'", conn2);
-                    reader2 = cmnd2.ExecuteReader();
-                    {
-                        while (reader2.Read())
-                        {
-                            cars_model.Value += "/" + reader2.GetString(0);
-                            cars_price.Value += "/" + reader2.GetString(1);
-                        }
-                        reader2.Close();
-                    }
-                    cmnd2.Cancel();
-
-
+                    cars_model.Value += "/" + reader.GetString(2);
+                    cars_price.Value += "/" + reader.GetString(3);
                 }
                 reader.Close();
             }
@@ -73,12 +56,13 @@ namespace FinalTask
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            var cmnd = new NpgsqlCommand("SELECT username FROM users WHERE username='" + TextBox1.Text.ToString() + "'AND username != '" + Session["username"] + "' AND availability = 'true'", conn);
-            var result = cmnd.ExecuteScalar();
+            NpgsqlCommand cmnd = new NpgsqlCommand("SELECT u.username FROM users u LEFT JOIN dibs d ON u.username = d.renter LEFT JOIN cars c on u.username = c.carowner WHERE (d.renter IS NULL OR d.accept ='pending') AND c.carowner IS NOT NULL AND u.username !='" + Session["username"] + "' AND u.username='"+TextBox1.Text+"'", conn);
+            NpgsqlDataReader result = cmnd.ExecuteReader();
 
-            if (result != null)
+
+            if (result.Read())
             {
-                Session["interested"] = result.ToString();
+                Session["interested"] = result.GetString(0);
 
                 conn.Close();
                 Response.Redirect("Details.aspx");
@@ -94,7 +78,6 @@ namespace FinalTask
         protected void Back_Click(object sender, EventArgs e)
         {
             conn.Close();
-            conn2.Close();
             Response.Redirect("Choice.aspx");
         }
     }

@@ -40,7 +40,7 @@
             &nbsp;</p>
 
         <div>Select your location in the map:
-            <asp:HiddenField ID="location" runat="server" />
+            <asp:HiddenField ID="location" runat="server" Value="" />
         </div>
 
         <div id="map" class="center" style="width:1000px;height:500px;background:grey"></div>
@@ -50,10 +50,12 @@
         function myMap() {
 
             var myloc;
-            var mylat;
-            var mylng;
+            var mylat = 37.9415841;
+            var mylng = 23.6530173;
+            myloc = { lat: mylat, lng: mylng };
 
-            if (location.value != "")
+
+            if (location.Value != "")
             {
                 var loc = document.getElementById('location').value;
                 var LatLng = loc.replace("(", "").replace(")", "").split(", ")
@@ -62,29 +64,24 @@
                 myloc = {
                     lat: mylat,
                     lng: mylng
-                }
+                };
 
             }
             else
             {
-                mylat = 37.9415841;
-                mylng = 23.6530173;
-
-                myloc = { lat: mylat, lng: mylng };
-
                 document.getElementById('location').value = "(" + mylat + ", " + mylng + ")";
-
+                
                 if (navigator.geolocation) {
                     navigator.geolocation.getCurrentPosition(function (position) {
-                        var pos = {
-                            lat: position.coords.latitude,
+                        myloc = {
+                            lat: position.coords.lattitude,
                             lng: position.coords.longitude
                         };
 
-                        document.getElementById('location').value = "(" + position.coords.latitude + ", " + position.coords.longitude + ")";;
+                        document.getElementById('location').value = "(" + position.coords.lattitude + ", " + position.coords.longitude + ")";
+                        
 
-
-                        marker.setPosition(pos);
+                        marker.setPosition(myloc);
                         map.setCenter(marker.getPosition());
                     }, function () {
                         handleLocationError(true, infoWindow, map.getCenter());
@@ -94,14 +91,12 @@
                     handleLocationError(false, infoWindow, map.getCenter());
                 }
             }
-
-
             var mapOptions =
             {
                 center: new google.maps.LatLng(myloc),
                 zoom: 15,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
-            }
+            };
 
             var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 

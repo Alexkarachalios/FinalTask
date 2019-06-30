@@ -15,7 +15,7 @@ namespace FinalTask
         string localhost="127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK"; 
+        string pass = "1234qwer";//13898301153KSXK"; 
         string database = "postgres";
         NpgsqlConnection conn;
 
@@ -38,7 +38,7 @@ namespace FinalTask
             }
 
 
-            if (!IsPostBack)
+            if (!IsPostBack && Session["username"]!=null)
             {
                 NpgsqlCommand cmnd = new NpgsqlCommand("SELECT name, surname, username, birth, experience, latlng FROM users WHERE username = '" + Session["username"] + "'", conn);
                 NpgsqlDataReader reader = cmnd.ExecuteReader();
@@ -58,7 +58,6 @@ namespace FinalTask
                     birth_text.Text = reader.GetString(3);
                     exp_text.Text = reader.GetString(4);
                     location.Value = reader.GetString(5);
-
                 }
                 reader.Close();
                 cmnd.Cancel();

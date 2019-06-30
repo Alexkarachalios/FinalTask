@@ -14,7 +14,7 @@ namespace FinalTask
         string localhost = "127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "13898301153KSXK";
+        string pass = "1234qwer";//13898301153KSXK";
         string database = "postgres";
         NpgsqlConnection conn;
         NpgsqlConnection conn2;
@@ -58,22 +58,17 @@ namespace FinalTask
                 reader.Close();
                 cmnd.Cancel();
 
-                NpgsqlCommand cmnd2 = new NpgsqlCommand("SELECT availability FROM users WHERE username='" + Session["username"] + "'", conn);
-                NpgsqlDataReader reader2 = cmnd2.ExecuteReader();
+                string pic = "";
+                NpgsqlCommand cmdphoto = new NpgsqlCommand("SELECT photo FROM CARS WHERE carowner= '" + Session["username"] + "'", conn);
+                reader = cmdphoto.ExecuteReader();
+                while (reader.Read())
+                {
+                    pic = reader["photo"].ToString();
+                    Image1.Visible = true;
 
-                reader2.Read();
-                if (reader2.GetString(0) == "true")
-                {
-                    DropDownList1.DataBind();
-                    DropDownList1.Items.FindByValue("true").Selected = true;
                 }
-                else
-                {
-                    DropDownList1.DataBind();
-                    DropDownList1.Items.FindByValue("false").Selected = true;
-                }
-                reader2.Close();
-                cmnd2.Cancel();
+                reader.Close();
+                Image1.ImageUrl = "Content/Themes/" + pic;
 
             }
 
@@ -110,12 +105,25 @@ namespace FinalTask
                 cmd_dibs.Cancel();
 
 
-                NpgsqlCommand cmnd3 = new NpgsqlCommand("SELECT name,surname,rating FROM users WHERE username='" + read_dibs.GetString(1) + "'", conn2);
+                NpgsqlCommand cmnd3 = new NpgsqlCommand("SELECT name,surname,rating,birth,experience,people FROM users WHERE username='" + read_dibs.GetString(1) + "'", conn2);
                 NpgsqlDataReader reader3 = cmnd3.ExecuteReader();
                 reader3.Read();
+                exp_lab.Visible = true;
+                exp.Visible = true;
+                exp.Text = reader3.GetString(4);
+                age_lab.Visible = true;
+                age.Visible = true;
+                age.Text = reader3.GetString(3);
                 rrate_lab.Visible = true;
                 rrating.Visible = true;
-                rrating.Text = reader3["rating"].ToString();
+                if (reader3.GetString(5) != "0")
+                {
+                    rrating.Text = (Convert.ToInt32(reader3.GetString(2)) / Convert.ToInt32(reader3.GetString(5))).ToString();
+                }
+                else
+                {
+                    rrating.Text = "No rating yet!";
+                }
                 rlast_lab.Visible = true;
                 rlastname.Visible = true;
                 rlastname.Text = reader3.GetString(1);
@@ -142,10 +150,6 @@ namespace FinalTask
             else
             {
                 var cmd = new NpgsqlCommand("INSERT INTO cars(carowner,model,cc,price,km,year) VALUES('" + Session["username"].ToString() + "','" + model_text.Text.ToString() + "','" + cc_text.Text.ToString() + "','" + price_text.Text.ToString() + "','" + km_text.Text.ToString() + "','" + year_text.Text.ToString() + "')", conn);
-                var cmd2 = new NpgsqlCommand("UPDATE users SET availability = " + DropDownList1.SelectedValue + " WHERE username='" + Session["username"] + "'", conn);
-                //cmd.Prepare();
-                // Set parameters
-                cmd2.ExecuteNonQuery();
                 cmd.ExecuteNonQuery();
                 Response.Redirect("choice.aspx");
 
@@ -166,8 +170,6 @@ namespace FinalTask
                 var cmd = new NpgsqlCommand("UPDATE cars SET model='" + model_text.Text.ToString() + "', cc='" + cc_text.Text.ToString() + "' , price='" + price_text.Text.ToString() + "', km='" + km_text.Text.ToString() + "' , year='" + year_text.Text.ToString() + "' , photo='" + s.ToString() + "' WHERE carowner='" + Session["username"] + "'", conn);
                 cmd.ExecuteNonQuery();
 
-                var cmd2 = new NpgsqlCommand("UPDATE users SET availability = " + DropDownList1.SelectedValue + " WHERE username='" + Session["username"] + "'", conn);
-                cmd2.ExecuteNonQuery();
 
                 Response.Redirect("choice.aspx");
             }
@@ -200,22 +202,29 @@ namespace FinalTask
 
         protected void rate_button_Click(object sender, EventArgs e)
         {
-            string curr, newer;
-            int r, temp;
-            NpgsqlCommand rate = new NpgsqlCommand("SELECT rating FROM users WHERE username='" + client + "'", conn);
+            string curr, curp, newer;
+            int r, p, temp;
+            NpgsqlCommand rate = new NpgsqlCommand("SELECT rating, people FROM users WHERE username='" + client + "'", conn);
             NpgsqlDataReader reader;
+
             reader = rate.ExecuteReader();
             reader.Read();
-            curr = reader["rating"].ToString();
-            //string msg = curr;
-            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
+
+            curr = reader.GetString(0);
+            curp = reader.GetString(1);
+
             r = Convert.ToInt32(curr);
+            p = Convert.ToInt32(curp);
+
             newer = rate_list.Text.ToString();
             temp = Convert.ToInt32(newer);
-            r = (r + temp) / 2;
-            //r = r / 2;
+
+            p++;
+            r += temp;
+
             reader.Close();
-            NpgsqlCommand set_rating = new NpgsqlCommand("UPDATE users SET rating='" + r + "'WHERE username='" + client + "'", conn);
+
+            NpgsqlCommand set_rating = new NpgsqlCommand("UPDATE users SET rating='" + r + "', people='"+ p +"'WHERE username='" + client + "'", conn);
             set_rating.ExecuteNonQuery();
             rate_label.Visible = false;
             rate_list.Visible = false;
