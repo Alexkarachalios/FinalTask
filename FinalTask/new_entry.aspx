@@ -27,7 +27,7 @@
             width: 150px;
         }
         #Button1 {
-            margin-left: 0px;
+            margin-left: 21px;
         }
         #add_button {
             margin-left: 96px;
@@ -40,7 +40,7 @@
         }
         </style>
 </head>
-<body style="background-image:url('Content/Themes/car.png'); background-size:100% 100%;">
+<body style="background-image:url('Content/Themes/car.png'); background-size:100% 120%;">
     <form id="form1" runat="server">
         <div style="height: 42px">
             <h4 align="center" style="font-size:300%; height: 69px;">ADD A CAR FOR RENTAL</h4>
@@ -102,6 +102,22 @@
             <br />
             <br />
             <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <asp:Label ID="rate_label" runat="server" Text="RATE : " Visible="False"></asp:Label>
+                    <asp:DropDownList ID="rate_list" runat="server" style="margin-left: 18px" Visible="False" Width="59px">
+                        <asp:ListItem>0</asp:ListItem>
+                        <asp:ListItem>1</asp:ListItem>
+                        <asp:ListItem>2</asp:ListItem>
+                        <asp:ListItem>3</asp:ListItem>
+                        <asp:ListItem>4</asp:ListItem>
+                        <asp:ListItem>5</asp:ListItem>
+                        <asp:ListItem>6</asp:ListItem>
+                        <asp:ListItem>7</asp:ListItem>
+                        <asp:ListItem>8</asp:ListItem>
+                        <asp:ListItem>9</asp:ListItem>
+                        <asp:ListItem>10</asp:ListItem>
+                    </asp:DropDownList>
+                    <asp:Button ID="rate_button" runat="server" OnClick="rate_button_Click" style="margin-left: 27px" Text="SUBMIT" Visible="False" />
             <br />
 
             <p style="float:right;">

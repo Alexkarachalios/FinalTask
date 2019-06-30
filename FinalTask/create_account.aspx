@@ -9,7 +9,7 @@
         create_button {float:right;}
     </style>
 </head>
-<body style="background-image:url('Content/Themes/car.png'); background-repeat:no-repeat; background-size:100% 100%;">
+<body style="background-image:url('Content/Themes/car.png'); background-repeat:no-repeat; background-size:100% 120%;">
    
     <form id="form1" runat="server">
         

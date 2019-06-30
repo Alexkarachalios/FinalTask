@@ -12,7 +12,7 @@
         }
     </style>
 </head>
-<body style="background-image: url('Content/Themes/car.png'); background-repeat:no-repeat; background-size:100% 100%;">
+<body style="background-image: url('Content/Themes/car.png'); background-repeat:no-repeat; background-size:100% 120%;">
     <form id="form1" runat="server">
         <div style="height: 42px">
             <h4 align="center" style="font-size:300%; height: 69px;">Details</h4>
@@ -51,6 +51,21 @@
         
         <asp:Button ID="dibs_button" runat="server" OnClick="contact_button_Click" Text="DIB CAR" Width="128px" />
     &nbsp;&nbsp;&nbsp;
+        <asp:Label ID="rate_label" runat="server" Text="RATE CAR : " Visible="False"></asp:Label>
+        <asp:DropDownList ID="rate_list" runat="server" OnSelectedIndexChanged="rate_list_SelectedIndexChanged" style="margin-left: 13px" Visible="False">
+            <asp:ListItem Value="0"></asp:ListItem>
+            <asp:ListItem>1</asp:ListItem>
+            <asp:ListItem>2</asp:ListItem>
+            <asp:ListItem Value="3"></asp:ListItem>
+            <asp:ListItem>4</asp:ListItem>
+            <asp:ListItem>5</asp:ListItem>
+            <asp:ListItem>6</asp:ListItem>
+            <asp:ListItem>7</asp:ListItem>
+            <asp:ListItem>8</asp:ListItem>
+            <asp:ListItem>9</asp:ListItem>
+            <asp:ListItem>10</asp:ListItem>
+        </asp:DropDownList>
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" style="margin-left: 24px" Text="SUBMIT" Visible="False" />
         <br />
         <asp:Label ID="state_label" runat="server"></asp:Label>
         <br />
@@ -88,7 +103,7 @@
 
     <p style="float:right;">
         Owner rating : 
-        <asp:TextBox ID="oarating" runat="server" style="margin-right: 25px" Width="120px" Enabled="False"></asp:TextBox>
+        <asp:TextBox ID="oarating" runat="server" style="margin-right: 25px" Width="120px" Enabled="False" OnTextChanged="oarating_TextChanged"></asp:TextBox>
         </p>
 
         </div>

@@ -13,7 +13,7 @@ namespace FinalTask
         string localhost = "127.0.0.1";
         string port = "5432";
         string user = "postgres";
-        string pass = "1234qwer";//"13898301153KSXK";//"13898301153KSXK";
+        string pass = "13898301153KSXK";
         string database = "postgres";
         NpgsqlConnection conn;
         protected void Page_Load(object sender, EventArgs e)
@@ -51,12 +51,13 @@ namespace FinalTask
             cmnd.Cancel();
 
 
-            cmnd = new NpgsqlCommand("SELECT name,surname FROM users WHERE username = '" + Session["interested"] + "'", conn);
+            cmnd = new NpgsqlCommand("SELECT name,surname,rating FROM users WHERE username = '" + Session["interested"] + "'", conn);
             reader = cmnd.ExecuteReader();
 
             reader.Read();
             oname.Text = reader.GetString(0);
             olastname.Text = reader.GetString(1);
+            oarating.Text = reader["rating"].ToString();
 
             reader.Close();
             cmnd.Cancel();
@@ -69,6 +70,7 @@ namespace FinalTask
             while (reader.Read())
             {
                 pic = reader["photo"].ToString();
+                
             }
             Label2.Text = pic;
             reader.Close();
@@ -114,8 +116,11 @@ namespace FinalTask
             }
             else if (dibs_button.Text == "END RENTAL")
             {
-                NpgsqlCommand end = new NpgsqlCommand("DELETE FROM dibs WHERE buyer='" + Session["username"] + "'", conn);
+                NpgsqlCommand end = new NpgsqlCommand("UPDATE dibs SET accept='ended' WHERE buyer='" + Session["username"] + "'", conn);
                 end.ExecuteNonQuery();
+                rate_label.Visible = true;
+                rate_list.Visible = true;
+                Button1.Visible = true;
                 dibs_button.Text = "DIB CAR";
                 state_label.Text = "";
             }
@@ -129,6 +134,41 @@ namespace FinalTask
         {
             conn.Close();
             Response.Redirect("Search.aspx");
+        }
+
+        protected void oarating_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void rate_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            string curr,newer;
+            int r, temp;
+            NpgsqlCommand rate = new NpgsqlCommand("SELECT rating FROM users WHERE username='" + Session["interested"] + "'", conn);
+            NpgsqlDataReader reader;
+            reader = rate.ExecuteReader();
+            reader.Read();
+            curr = reader["rating"].ToString();
+            //string msg = curr;
+            //ClientScript.RegisterStartupScript(this.GetType(), "myalert", "alert('" + msg + "');", true);
+            r = Convert.ToInt32(curr);
+            newer = rate_list.Text.ToString();
+            temp = Convert.ToInt32(newer);
+            r = (r + temp)/2;
+            //r = r / 2;
+            reader.Close();
+            NpgsqlCommand set_rating = new NpgsqlCommand("UPDATE users SET rating='" + r + "'WHERE username='" + Session["interested"] + "'", conn);
+            set_rating.ExecuteNonQuery();
+            Button1.Visible = false;
+            rate_list.Visible = false;
+            rate_label.Visible = false;
+            Response.Redirect("Choice.aspx");
         }
     }
 }
